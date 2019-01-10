@@ -81,7 +81,8 @@
           name=$("#name").val();
           email=$("#email").val();
           comments=$("#comments").val();
-          $.post("http://localhost:3002/signup",
+          var url = LoadUrl('signup')
+          $.post(url,
             {
               name: name, 
               email: email, 

@@ -7,6 +7,15 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script>
+        function LoadUrl(pagename){
+            //window.location.href = "http://localhost:3002/signup"
+            var url = window.location.href
+            var arr = url.split("/");
+            var result = arr[0] + "//" + arr[2] + "/" + pagename
+            window.location.href = result;
+        }
+    </script> 
 </head>
 <body>
     <!-- Navigation -->
@@ -23,13 +32,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://localhost:3002">Home</a>
+              <a class="nav-link" href="javascript:LoadUrl('');">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://localhost:3002/signup">Sign Up</a>
+              <a class="nav-link" href="javascript:LoadUrl('signup');">Sign Up</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://localhost:3002/guestbook">GuestBook</a>
+              <a class="nav-link" href="javascript:LoadUrl('guestbook');">GuestBook</a>
             </li>
           </ul>
         </div>
@@ -41,6 +50,7 @@
        {{{ body }}}
        {{>footer }}
     </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" </script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" </script>
+
 </body>
 </html>
