@@ -2,6 +2,36 @@ const request = require('request');
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
+const User = require('./models/user');
+
+
+
+router.get('/signup', function(req, res, next){
+    res.render('signguest');
+});
+router.post('/signup', function(req, res, next){
+    const  myUser = new User(req.body); 
+    myUser
+        .save()
+        .then(result => {
+                console.log(result);
+                return res.render('guestbook');
+        }).catch(err=>{
+            console.log(err);
+            res.status(500).json({
+                error: err                
+            });
+        });
+
+});
+
+
+router.get('/guestbook', function(req, res, next) {
+    User.find(function(err, data) {
+      res.render('guestbook', { title: 'Shawn Guestbook', contents: data });
+  });
+});
+
 
 router.get('/',function(req, res, next){
     res.render('index', {title: 'Cool', condition: false, anyArray: [1,2,3]});
